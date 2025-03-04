@@ -1,0 +1,44 @@
+
+app:
+  name: infra-web-app
+
+datasource:
+  name: 'infra-datasource'
+  url: jdbc:mysql://localhost:3306/infra_web_app?useUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+  type: com.zaxxer.hikari.HikariDataSource
+  driver-class-name: com.mysql.cj.jdbc.Driver
+  hikari:
+    maximum-pool-size: 20
+    max-lifetime: 120000
+    connection-test-query: 'select 1'
+
+
+server:
+  session:
+    cookie:
+      http-only: true
+      secure: true
+      max-age: 1d
+      same-site: lax
+  netty:
+    multipart:
+      max-field-size: 100MB
+      field-size-threshold: 10MB
+
+infra:
+  output:
+    ansi:
+      enabled: always
+  profiles:
+    active: dev
+
+
+logging:
+  file:
+    path: ./logs
+  level:
+    root: info
+  group:
+    netty: io.netty
+    nettyLogging: io.netty.handler.logging
+

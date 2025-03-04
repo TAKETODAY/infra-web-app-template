@@ -1,0 +1,27 @@
+
+server:
+  session:
+    timeout: 3D
+    persistent: true
+  netty:
+    worker-threads: 8
+    acceptor-threads: 1
+    logging-level: debug
+  error:
+    include-message: always
+
+datasource:
+  username: root
+  password: 88888888
+
+
+web:
+  mvc:
+    log-request-details: true
+
+logging:
+  level:
+    netty: info
+    nettyLogging: info
+    web: trace
+    sql: debug
