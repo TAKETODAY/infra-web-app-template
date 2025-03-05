@@ -14,22 +14,23 @@
  * limitations under the License.
  */
 
-package app.web;
+package app.web.interceptor;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import app.web.interceptor.LoginInterceptor;
 import infra.web.annotation.Interceptor;
 
 /**
+ * 登录检查拦截器
+ *
  * @author <a href="https://github.com/TAKETODAY">海子 Yang</a>
  * @since 1.0 2025/3/4 21:42
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Interceptor(LoginInterceptor.class)
+@Interceptor(RequiresLoginInterceptor.class)
 @Target({ ElementType.PARAMETER, ElementType.METHOD, ElementType.TYPE })
 public @interface RequiresLogin {
 

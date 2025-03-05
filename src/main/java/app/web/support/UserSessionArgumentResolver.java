@@ -19,9 +19,9 @@ package app.web.support;
 import java.util.Optional;
 
 import app.model.User;
-import app.web.RequiresLogin;
 import app.web.UnauthorizedException;
 import app.web.UserSession;
+import app.web.interceptor.RequiresLogin;
 import infra.lang.Nullable;
 import infra.session.SessionManager;
 import infra.session.SessionManagerOperations;
@@ -33,10 +33,10 @@ import infra.web.handler.method.ResolvableMethodParameter;
 
 /**
  * 登录信息参数解析
- * <p>
+ * <p>支持以下参数类型：
  * <ul>
  *   <li>{@code User}没有登录会抛异常</li>
- *   <li>{@code UserSession}不会抛异常</li>
+ *   <li>{@code UserSession}不会抛异常，使用{@link UserSession#isLoggedIn()}判断是否登录</li>
  *   <li>{@code Optional<User>}不会抛异常</li>
  *   <li>{@code @Nullable User}不会抛异常</li>
  *   <li>{@code @RequiresLogin User}没有登录会抛异常</li>
@@ -47,9 +47,9 @@ import infra.web.handler.method.ResolvableMethodParameter;
  * @since 2019-07-25 00:56
  */
 @Component
-final class UserSessionParameterResolver extends SessionManagerOperations implements ParameterResolvingStrategy {
+final class UserSessionArgumentResolver extends SessionManagerOperations implements ParameterResolvingStrategy {
 
-  public UserSessionParameterResolver(SessionManager sessionManager) {
+  public UserSessionArgumentResolver(SessionManager sessionManager) {
     super(sessionManager);
   }
 

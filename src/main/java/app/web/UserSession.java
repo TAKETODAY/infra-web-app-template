@@ -34,11 +34,25 @@ public class UserSession {
     return loginUser != null;
   }
 
-  public long getLoginUserId() {
+  /**
+   * 获取登录用户ID，如果未登录将抛出 {@link UnauthorizedException}
+   *
+   * @throws UnauthorizedException 如果未登录将抛出
+   */
+  public long loginUserId() throws UnauthorizedException {
+    return loginUser().getId();
+  }
+
+  /**
+   * 获取登录用户信息，如果未登录将抛出 {@link UnauthorizedException}
+   *
+   * @throws UnauthorizedException 如果未登录将抛出
+   */
+  public User loginUser() throws UnauthorizedException {
     if (loginUser == null) {
       throw new UnauthorizedException();
     }
-    return loginUser.getId();
+    return loginUser;
   }
 
   @Nullable

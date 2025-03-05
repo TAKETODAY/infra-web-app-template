@@ -7,6 +7,9 @@ server:
     worker-threads: 8
     acceptor-threads: 1
     logging-level: debug
+    shutdown:
+      quiet-period: 0
+
   error:
     include-message: always
 

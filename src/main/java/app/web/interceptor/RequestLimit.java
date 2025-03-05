@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package app.web;
+package app.web.interceptor;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -23,14 +23,15 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.util.concurrent.TimeUnit;
 
-import app.web.interceptor.RequestLimitInterceptor;
 import infra.lang.Constant;
 import infra.web.annotation.Interceptor;
 
 /**
+ * Web 请求限流拦截器
+ * <p>
  * 默认值：一秒钟请求一次
  * <p>
- * 单位时间内可以请求的次数, 超出部分将 {@link #errorMessage()} 返回给客户端,
+ * 在设置的时间段内可以请求的次数, 超出部分将 {@link #errorMessage()} 返回给客户端,
  * 默认错误消息：{@link RequestLimitInterceptor#defaultErrorMessage}
  *
  * @author <a href="https://github.com/TAKETODAY">海子 Yang</a>
@@ -53,7 +54,13 @@ public @interface RequestLimit {
    */
   long timeout() default 1;
 
+  /**
+   * {@link #timeout} 值的时间单位, 默认：秒
+   */
   TimeUnit unit() default TimeUnit.SECONDS;
 
+  /**
+   * 限流触发时的错误消息
+   */
   String errorMessage() default Constant.DEFAULT_NONE;
 }

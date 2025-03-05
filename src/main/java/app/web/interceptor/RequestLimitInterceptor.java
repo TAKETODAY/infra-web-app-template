@@ -28,7 +28,6 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import app.web.ErrorMessage;
 import app.web.ErrorMessageException;
-import app.web.RequestLimit;
 import app.web.util.IpUtils;
 import infra.http.HttpStatus;
 import infra.http.MediaType;
@@ -44,6 +43,8 @@ import infra.web.RequestContext;
 import infra.web.handler.method.HandlerMethod;
 
 /**
+ * Web 限流拦截器实现
+ *
  * @author <a href="https://github.com/TAKETODAY">海子 Yang</a>
  * @since 1.0 2025/3/4 21:44
  */

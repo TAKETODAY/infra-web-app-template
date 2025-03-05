@@ -23,7 +23,7 @@ import app.model.UserStatus;
 import app.web.ErrorMessageException;
 import app.web.Pageable;
 import app.web.Pagination;
-import app.web.RequiresLogin;
+import app.web.interceptor.RequiresLogin;
 import infra.persistence.EntityManager;
 import infra.persistence.EntityRef;
 import infra.persistence.Id;

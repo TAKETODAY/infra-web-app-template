@@ -27,11 +27,11 @@ import infra.web.resource.ResourceHttpRequestHandler;
  * @author <a href="https://github.com/TAKETODAY">海子 Yang</a>
  * @since 1.0 2025/3/4 21:43
  */
-public class LoginInterceptor extends SessionHandlerInterceptor {
+class RequiresLoginInterceptor extends SessionHandlerInterceptor {
 
   // Authorization
 
-  public LoginInterceptor(SessionManager sessionManager) {
+  public RequiresLoginInterceptor(SessionManager sessionManager) {
     super(sessionManager);
   }
 

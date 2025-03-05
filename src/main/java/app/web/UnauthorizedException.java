@@ -21,6 +21,11 @@ import java.io.Serial;
 import infra.http.HttpStatus;
 import infra.web.ResponseStatusException;
 
+/**
+ * 未登录异常 401
+ *
+ * @author <a href="https://github.com/TAKETODAY">海子 Yang</a>
+ */
 public class UnauthorizedException extends ResponseStatusException {
 
   @Serial
