@@ -65,11 +65,19 @@ class AuthHttpHandler extends SessionManagerOperations {
     this.entityManager = entityManager;
   }
 
+  /**
+   * 获取登录信息 API
+   */
   @GET
   public User selfInfo(User loginUser) {
     return loginUser;
   }
 
+  /**
+   * 退出登录 API
+   *
+   * @param session 会话
+   */
   @DELETE
   public void logout(WebSession session) {
     session.invalidate();
