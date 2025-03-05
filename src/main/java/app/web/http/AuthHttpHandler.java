@@ -18,7 +18,6 @@ package app.web.http;
 
 import org.hibernate.validator.constraints.Length;
 
-import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
@@ -44,7 +43,6 @@ import infra.web.annotation.RequestMapping;
 import infra.web.annotation.ResponseStatus;
 import infra.web.annotation.RestController;
 import infra.web.multipart.MultipartFile;
-import infra.web.util.UriUtils;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -126,15 +124,7 @@ class AuthHttpHandler extends SessionManagerOperations {
   }
 
   //---------------------------------------------------------------------
-  // 修改当前用户的信息
-  //---------------------------------------------------------------------
-
-  static String decode(String source) {
-    return UriUtils.decode(source, StandardCharsets.UTF_8);
-  }
-
-  //---------------------------------------------------------------------
-  // 修改当前用户的信息
+  // 修改当前登录用户的信息
   //---------------------------------------------------------------------
 
   public static class InfoForm {
@@ -148,7 +138,7 @@ class AuthHttpHandler extends SessionManagerOperations {
   }
 
   /**
-   * 当前登录用户信息
+   * 当前登录用户信息 API
    *
    * @param loginUser 登录用户
    * @param form 表单
@@ -189,7 +179,7 @@ class AuthHttpHandler extends SessionManagerOperations {
   }
 
   /**
-   * 修改用户密码
+   * 修改用户密码 API
    *
    * @param loginUser 登录用户
    * @param form 表单
